@@ -24,7 +24,24 @@
         <% if (!result) { %>
             <div class="loading">You have not added any coins yet...</div>
         <% } else { %>
-            <div><%= result %></div>
+                    <div class="crypto-card">
+                        <button class="remove-btn" onclick="removeCoin('${coin.id}')" title="Remove coin">×</button>
+                        <div class="crypto-header">
+                            <img src=<%= result.icon_url %> alt="<%= result.name %>" class="crypto-icon">
+                            <div>
+                                <div class="crypto-name"><%= result.name%></div>
+                                <span class="crypto-symbol"><%= result.symbol.toUpperCase()%></span>
+                            </div>
+                        </div>
+                        <div class="crypto-price">$</div>
+
+                        <div class="crypto-stats">
+                            <div class="stat">
+                                <div class="stat-label">24h Volume</div>
+                                <div class="stat-value">$<%= result.max_supply%></div>
+                            </div>
+                        </div>
+                    </div>
             <% } %>
     </div>
 

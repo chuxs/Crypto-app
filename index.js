@@ -29,6 +29,8 @@ app.get("/submit", async (req, res) => {
     const result = apiEndpoint.data;
 
     console.log(result.crypto[coinSymbol]);
+
+    res.render("index.ejs", {result: result.crypto[coinSymbol]});
         
     } catch (error) {
         console.error("Error fetching coin data:", error);
