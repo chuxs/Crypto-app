@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Crypto Price Dashboard</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Live Crypto Dashboard</h1>
+            <p>Real-time cryptocurrency prices and market data</p>
+        </div>
+
+        <div class="add-coin-section">
+            <h3 style="margin-bottom: 15px;">Add Cryptocurrency</h3>
+            <form action="/submit" method="GET" class="add-coin-form">
+                <input type="text" id="coinInput" name="coinInput" placeholder="Enter coin symbol (e.g., BTC, ETH, ADA)" />
+                <button type="submit" onclick="addCard()" >Add Coin</button>
+            </form>
+        </div>
+
+        <% if (!result) { %>
+            <div class="loading">You have not added any coins yet...</div>
+        <% } else { %>
+            <div><%= result %></div>
+            <% } %>
+    </div>
+
+    <script src="/Public/script/script.js"></script>
+</body>
+</html>
