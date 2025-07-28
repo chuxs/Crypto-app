@@ -81,7 +81,7 @@ app.get("/submit", async (req, res) => {
              coinName: result.crypto[coinSymbol].name,
              coinSymbol: result.crypto[coinSymbol].symbol,
              coinPrice: resultUSD.data[i].price_usd,
-             coinVolume24: resultUSD.data[i].volume24,
+             coinMarketCap: resultUSD.data[i].market_cap_usd,
             });
 
             const coinListRef = ref(database, 'coinsAdded/');
