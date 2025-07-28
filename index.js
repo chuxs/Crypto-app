@@ -67,11 +67,11 @@ app.get("/submit", async (req, res) => {
     const result = apiData.data;
     const resultUSD = apiUSDComparison.data;
 
-    console.log("Coin Data:", result.crypto[coinSymbol]);
+    // console.log("Coin Data:", result.crypto[coinSymbol]);
 
     for (let i =0; i < resultUSD.data.length; i++) {
         if (resultUSD.data[i].symbol === coinSymbol) {
-            console.log("Coin Data:", resultUSD.data[i]);
+            // console.log("Coin Data:", resultUSD.data[i]);
 
             const newResultUSD = resultUSD.data[i];
 
@@ -108,10 +108,10 @@ app.post("/delete", (req, res) => {
     const coinRef = ref(database, 'coinsAdded/' + coinId);
 
     remove(coinRef).then(() => {
-        console.log("Coin removed successfully");
+        // console.log("Coin removed successfully");
         res.redirect("/");
     }).catch((error) => {
-        console.error("Error removing coin:", error);
+        // console.error("Error removing coin:", error);
         res.status(500).send("Internal Server Error");
     });
 });
