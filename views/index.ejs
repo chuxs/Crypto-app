@@ -45,7 +45,10 @@
                                 <div class="stat-value">$<%= coinList[i].coinVolume24 %></div>
                             </div>
                         </div>
-                        <button class="remove-btn" onclick="removeCoin('${coinList[i].id}')" title="Remove coin">×</button>
+                        <form action="/delete" method="POST">
+                            <input type="hidden" name="coinId" value="<%= coinList[i].contentID %>">
+                            <button class="remove-btn"  title="Remove coin">×</button>
+                        </form>
                     </div>
                 
                 <% }; %>

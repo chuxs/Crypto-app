@@ -102,6 +102,20 @@ app.get("/submit", async (req, res) => {
 
 });
 
+app.post("/delete", (req, res) => {
+    const coinId = req.body['coinId'];
+
+    const coinRef = ref(database, 'coinsAdded/' + coinId);
+
+    remove(coinRef).then(() => {
+        console.log("Coin removed successfully");
+        res.redirect("/");
+    }).catch((error) => {
+        console.error("Error removing coin:", error);
+        res.status(500).send("Internal Server Error");
+    });
+});
+
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
