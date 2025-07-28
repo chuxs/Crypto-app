@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🚀 Live Crypto Dashboard</h1>
+            <h1>🚀 Anya Crypto Dashboard</h1>
             <p>Real-time cryptocurrency prices and market data</p>
         </div>
 
@@ -21,27 +21,35 @@
             </form>
         </div>
 
-        <% if (!result) { %>
+        <% if (!coinList) { %>
             <div class="loading">You have not added any coins yet...</div>
+            
         <% } else { %>
+            <div class="crypto-grid">
+              <% for(var i = 0; i < coinList.length; i++){ %>
+                
                     <div class="crypto-card">
-                        <button class="remove-btn" onclick="removeCoin('${coin.id}')" title="Remove coin">×</button>
+                        
                         <div class="crypto-header">
-                            <img src=<%= result.icon_url %> alt="<%= result.name %>" class="crypto-icon">
+                            <img src=<%= coinList[i].iconUrl %> alt="<%= coinList[i].coinName %>" class="crypto-icon">
                             <div>
-                                <div class="crypto-name"><%= result.name%></div>
-                                <span class="crypto-symbol"><%= result.symbol.toUpperCase()%></span>
+                                <div class="crypto-name"><%= coinList[i].coinName %></div>
+                                <span class="crypto-symbol"><%= coinList[i].coinSymbol.toUpperCase() %></span>
                             </div>
                         </div>
-                        <div class="crypto-price">$</div>
+                        <div class="crypto-price">$<%= coinList[i].coinPrice %></div>
 
                         <div class="crypto-stats">
                             <div class="stat">
                                 <div class="stat-label">24h Volume</div>
-                                <div class="stat-value">$<%= result.max_supply%></div>
+                                <div class="stat-value">$<%= coinList[i].coinVolume24 %></div>
                             </div>
                         </div>
+                        <button class="remove-btn" onclick="removeCoin('${coinList[i].id}')" title="Remove coin">×</button>
                     </div>
+                
+                <% }; %>
+            </div>
             <% } %>
     </div>
 
